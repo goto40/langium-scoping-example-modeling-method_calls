@@ -1,5 +1,6 @@
 import { createDefaultModule, DefaultModuleContext, inject, LangiumServices, Module, PartialLangiumServices } from 'langium';
 import { HelloWorldGeneratedModule } from './generated/module';
+import { MyScopeProvider } from './hello-world-scope';
 import { HelloWorldValidationRegistry, HelloWorldValidator } from './hello-world-validator';
 
 /**
@@ -23,6 +24,9 @@ export type HelloWorldServices = LangiumServices & HelloWorldAddedServices
  * selected services, while the custom services must be fully specified.
  */
 export const HelloWorldModule: Module<HelloWorldServices, PartialLangiumServices & HelloWorldAddedServices> = {
+    references: {
+        ScopeProvider: (services) => new MyScopeProvider(services)
+    },
     validation: {
         ValidationRegistry: (injector) => new HelloWorldValidationRegistry(injector),
         HelloWorldValidator: () => new HelloWorldValidator()

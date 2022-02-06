@@ -8,7 +8,7 @@ Pack: 'package' name=ID '{'
 Class: 'class' name=ID "{" defs+=Def* "}";
 Def: 'def' name=ID;
 Instance: 'instance' name=ID ':' type=[Class|FQN];
-Call: 'call' instance=[Instance|FQN] '->' ref=[Def];
+Call: 'call' instance=[Instance|FQN] '->' methodref=[Def];
 
 FQN returns string hidden(): ID ('.' ID)*;
 

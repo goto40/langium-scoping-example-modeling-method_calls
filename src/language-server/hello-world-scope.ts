@@ -17,7 +17,7 @@ export class MyScopeProvider extends DefaultScopeProvider {
             let definitions: Def[]|undefined = [];
             definitions = (node as Call).instance?.ref?.type?.ref?.defs;
             console.log(`definitions==${definitions}`);
-            if (definitions!=undefined) {
+            if (definitions!==undefined) {
                 definitions.forEach( d => { console.log(`name==${d.name}`); });
                 // solution suggested here: https://github.com/langium/langium/discussions/401
                 const descriptions = stream(definitions).map(element =>

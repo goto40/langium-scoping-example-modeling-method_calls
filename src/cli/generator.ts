@@ -1,10 +1,26 @@
 import fs from 'fs';
 import { CompositeGeneratorNode, NL, processGeneratorNode } from 'langium';
 import { Model } from '../language-server/generated/ast';
-import { extractDestinationAndName } from './cli-util';
+import { extractAstNode, extractDestinationAndName, setRootFolder } from './cli-util';
 import path from 'path';
+import colors from 'colors';
+import { createHelloWorldServices } from '../language-server/hello-world-module';
+import { HelloWorldLanguageMetaData } from '../language-server/generated/module';
 
-export function generateJavaScript(model: Model, filePath: string, destination: string | undefined): string {
+export const generateAction = async (fileName: string, opts: GenerateOptions): Promise<void> => {
+    const services = createHelloWorldServices().helloworld;
+    await setRootFolder(fileName, services, opts.root);
+    const helloworld = await extractAstNode<Model>(fileName, HelloWorldLanguageMetaData.fileExtensions, services);
+    const generatedDirPath = generateJavaScript(helloworld, fileName, opts.destination);
+    console.log(colors.green(`Java classes generated successfully: ${colors.yellow(generatedDirPath)}`));
+};
+
+export type GenerateOptions = {
+    destination?: string;
+    root?: string;
+}
+
+export function generateJavaScript(model: Model, filePath: string, destination?: string): string {
     const data = extractDestinationAndName(filePath, destination);
     const generatedFilePath = `${path.join(data.destination, data.name)}.js`;
 

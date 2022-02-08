@@ -15,6 +15,7 @@ export class MyScopeProvider extends DefaultScopeProvider {
     getScope(node: AstNode, referenceId: string): Scope {
         if (referenceId=="Call:methodref" && node.$type=='Call') {
             let definitions: Def[]|undefined = [];
+            // next line breaks 'i1'/'i2' refs
             definitions = (node as Call).instance?.ref?.type?.ref?.defs;
             console.log(`definitions==${definitions}`);
             if (definitions!==undefined) {

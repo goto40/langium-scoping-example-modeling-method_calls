@@ -11,10 +11,6 @@
     {
       "name": "keyword.control.hello-world",
       "match": "\\b(call|class|def|instance|package)\\b"
-    },
-    {
-      "name": "keyword.symbol.hello-world",
-      "match": "(\\->|\\:|\\.|\\{|\\})"
     }
   ],
   "repository": {

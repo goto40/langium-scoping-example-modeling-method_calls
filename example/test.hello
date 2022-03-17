@@ -1,0 +1,12 @@
+package p1 {
+    class C1 {
+        def a1
+    }
+    class C2 {
+        def b1
+    }
+    instance i1: C
+    instance i2: C2
+    call i1->a1
+    call i2->b1
+}

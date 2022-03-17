@@ -8,10 +8,5 @@
             "out": "syntaxes/hello-world.tmLanguage.json"
         }
     }],
-    "out": "src/language-server/generated",
-    "chevrotainParserConfig": {
-        "recoveryEnabled": true,
-        "nodeLocationTracking": "full",
-        "maxLookahead": 3
-    }
+    "out": "src/language-server/generated"
 }

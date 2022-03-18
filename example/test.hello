@@ -4,9 +4,10 @@ package p1 {
     }
     class C2 {
         def b1
+        def b2
     }
     instance i1: C1
     instance i2: C2
     call i1->a1
-    call i2->b1
+    call i2->b2
 }

@@ -7,7 +7,7 @@ Pack: 'package' name=ID '{'
 Class: 'class' name=ID "{" defs+=Def* "}";
 Def: 'def' name=ID;
 Instance: 'instance' name=ID ':' type=[Class:FQN];
-Call: 'call' instance=[Instance:FQN] '->' methodref=[Def:ID];
+Call: 'call' instance=[Instance:FQN] '->' methodref=[Def:ID]; // https://github.com/langium/langium/discussions/401
 
 FQN returns string hidden(): ID ('.' ID)*;
 
